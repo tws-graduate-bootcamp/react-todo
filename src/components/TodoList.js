@@ -13,11 +13,20 @@ export default class TodoList extends Component {
         })
       })
   }
+  onUpdateFilter = (e) => {
+    this.props.dispatch({
+      type: "SET_FILTER",
+      payload: !this.props.isOnlyActive
+    })
+  }
   render() {
     return (
       <div>
         <TodoInputContainer/>
         <Todos todos={this.props.todos}/>
+        <label>
+          <input type="checkbox" checked={this.props.isOnlyActive} onChange={this.onUpdateFilter}/> only active
+        </label>
       </div>
     )
   }
